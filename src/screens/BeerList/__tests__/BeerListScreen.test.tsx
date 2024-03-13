@@ -20,14 +20,15 @@ describe('BeerListScreen', () => {
     );
   };
 
-  // Waiting for scope to resolve fails 🤷
-  // Waiting for loading spinner to?
+  // Waiting for loading spinner fails sometimes
   it('renders the list of beers', async () => {
-    nock('https://api.sampleapis.com')
+    const scope = nock('https://api.sampleapis.com')
       .get('/beers/ale')
       .reply(200, testBeerData);
     const {getByText} = renderScreen();
+
     await waitFor(() => {
+      expect(scope.isDone()).toBeTruthy();
       expect(getByText('Founders All Day IPA')).toBeTruthy();
     });
     expect(
@@ -36,16 +37,22 @@ describe('BeerListScreen', () => {
     expect(getByText('Guinness Extra Stout')).toBeTruthy();
   });
   it('renders no beer message when there is no beer from api', async () => {
-    nock('https://api.sampleapis.com').get('/beers/ale').reply(200, []);
+    const scope = nock('https://api.sampleapis.com')
+      .get('/beers/ale')
+      .reply(200, []);
     const {getByText} = renderScreen();
     await waitFor(() => {
+      expect(scope.isDone()).toBeTruthy();
       expect(getByText('No beers today')).toBeTruthy();
     });
   });
   it('renders an error message when fetch fails', async () => {
-    nock('https://api.sampleapis.com').get('/beers/ale').reply(500);
+    const scope = nock('https://api.sampleapis.com')
+      .get('/beers/ale')
+      .reply(500);
     const {getByText} = renderScreen();
     await waitFor(() => {
+      expect(scope.isDone()).toBeTruthy();
       expect(getByText('Error fetching beers')).toBeTruthy();
     });
   });
