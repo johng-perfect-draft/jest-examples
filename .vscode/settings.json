@@ -1,0 +1,41 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "prettier.requireConfig": true,
+  "eslint.enable": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": ["."],
+  "eslint.lintTask.options": ". --ext .js,.ts,.tsx --cache",
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "yarn",
+  "eslint.lintTask.enable": true,
+  "files.associations": {
+    "Fastfile*": "ruby",
+    "Appfile": "ruby",
+    "Matchfile": "ruby",
+    "yarn.lock": "text",
+    ".env*": "dotenv"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.types.ts, ${capture}.stories.mdx, ${capture}.test.ts, ${capture}.test.tsx, ${capture}.spec.ts, ${capture}.spec.tsx, ${capture}.d.ts, ${capture}.d.ts.map, ${capture}.styled.ts, ${capture}.typegen.ts, ${capture}.hooks.ts",
+    "*.tsx": "${capture}.types.ts, ${capture}.stories.mdx, ${capture}.test.ts, ${capture}.test.tsx, ${capture}.spec.ts, ${capture}.spec.tsx, ${capture}.d.ts, ${capture}.d.ts.map, ${capture}.styled.ts, ${capture}.utils.ts, ${capture}.data.ts, ${capture}.typegen.ts, ${capture}.context.tsx, ${capture}.hooks.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
